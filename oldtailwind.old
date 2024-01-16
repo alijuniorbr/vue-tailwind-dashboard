@@ -1,8 +1,6 @@
-/** @type {import('tailwindcss').Config} */
-
 const defaultTheme = require("tailwindcss/defaultTheme");
 
-const whitelist = [
+whitelist = [
   "gray",
   "red",
   "orange",
@@ -19,9 +17,14 @@ const whitelist = [
   []
 );
 
-export default {
-  content: ["./index.html", "./src/**/*.{vue,js,ts}"],
-  safelist: whitelist,
+module.exports = {
+  mode: "jit",
+  purge: {
+    content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
+    options: {
+      whitelist,
+    },
+  },
   theme: {
     extend: {
       fontFamily: {
